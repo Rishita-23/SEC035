@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books and Movies Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .library {
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button {
+            background-color: #ff4d4d;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        li button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Books and Movies Library</h1>
+
+        <!-- Add Book Form -->
+        <div class="form-container">
+            <h2>Add a Book</h2>
+            <form id="book-form">
+                <input type="text" id="book-title" placeholder="Title" required>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+
+        <ul id="books-list"></ul>  <!-- Added missing book list -->
+
+        <!-- Add Movie Form -->
+        <div class="form-container">
+            <h2>Add a Movie</h2>
+            <form id="movie-form">
+                <input type="text" id="movie-title" placeholder="Title" required>
+                <button type="submit">Add Movie</button>
+            </form>
+        </div>
+
+        <ul id="movies-list"></ul>  <!-- Added missing movie list -->
+    </div>
+    
+    <script>
+        // Arrays to store books and movies
+        let books = [];
+        let movies = [];
+
+        // Get DOM elements
+        const bookForm = document.getElementById('book-form');
+        const movieForm = document.getElementById('movie-form');
+        const booksList = document.getElementById('books-list');
+        const moviesList = document.getElementById('movies-list');
+
+        // Function to add a book
+        function addBook(title) {
+            books.push({ title });
+            renderBooks();
+        }
+
+        // Function to add a movie
+        function addMovie(title) {
+            movies.push({ title });
+            renderMovies();
+        }
+
+        // Function to render books
+        function renderBooks() {
+            booksList.innerHTML = ''; // Clear list before re-rendering
+            books.forEach((book, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span><strong>${book.title}</strong></span>
+                    <button onclick="deleteBook(${index})">Delete</button>
+                `;
+                booksList.appendChild(li);
+            });
+        }
+
+        // Function to render movies
+        function renderMovies() {
+            moviesList.innerHTML = ''; // Clear list before re-rendering
+            movies.forEach((movie, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span><strong>${movie.title}</strong></span>
+                    <button onclick="deleteMovie(${index})">Delete</button>
+                `;
+                moviesList.appendChild(li);
+            });
+        }
+
+        // Function to delete a book
+        function deleteBook(index) {
+            books.splice(index, 1);
+            renderBooks();
+        }
+
+        // Function to delete a movie
+        function deleteMovie(index) {
+            movies.splice(index, 1);
+            renderMovies();
+        }
+
+        // Event listener for book form submission
+        bookForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('book-title').value;
+            addBook(title);
+            bookForm.reset();
+        });
+
+        // Event listener for movie form submission
+        movieForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('movie-title').value;
+            addMovie(title);
+            movieForm.reset();
+        });
+
+        // Initial render
+        renderBooks();
+        renderMovies();
+    </script>
+</body>
+</html>
