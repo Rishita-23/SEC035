@@ -1,0 +1,59 @@
+<input type="text" id="itemInput" placeholder="Enter item">
+<button id="addItem">Add Item</button>
+
+<input type="text" id="searchBox" placeholder="Search...">
+
+<ul id="itemList"></ul>
+
+<script>
+    const input = document.getElementById("itemInput");
+    const addButton = document.getElementById("addItem");
+    const list = document.getElementById("itemList");
+    const searchBox = document.getElementById("searchBox");
+
+    addButton.addEventListener("click", () => {
+        if (input.value.trim() === "") return;
+
+        const li = document.createElement("li");
+        li.textContent = input.value;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "X";
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.onclick = () => li.remove();
+
+        li.appendChild(deleteBtn);
+        list.appendChild(li);
+        input.value = "";
+    });
+
+    searchBox.addEventListener("keyup", () => {
+        const searchText = searchBox.value.toLowerCase();
+
+        document.querySelectorAll("#itemList li").forEach(item => {
+            const text = item.firstChild.textContent.toLowerCase();
+            if (text.includes(searchText)) {
+                item.style.display = "flex"; 
+                item.firstChild.innerHTML = highlightMatch(item.firstChild.textContent, searchText);
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+
+    function highlightMatch(text, searchText) {
+        if (!searchText) return text;
+        const regex = new RegExp(`(${searchText})`, "gi");
+        return text.replace(regex, `<span class="highlight">$1</span>`);
+    }
+</script>
+
+<style>
+    body { font-family: Arial, sans-serif; }
+    input { width: 100%; padding: 8px; margin: 5px 0; }
+    button { padding: 8px 10px; cursor: pointer; }
+    .highlight { background-color: yellow; font-weight: bold; }
+    ul { list-style-type: none; padding: 0; }
+    li { padding: 5px; display: flex; justify-content: space-between; align-items: center; }
+    .delete-btn { background-color: red; color: white; border: none; padding: 5px; cursor: pointer; }
+</style>

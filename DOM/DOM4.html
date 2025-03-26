@@ -1,0 +1,16 @@
+<img id="preview" src="C:\Users\rishi\Downloads\SZA SOS TOUR 2023.jpg" height="200">
+
+<div id="thumbnails">
+    <img src="C:\Users\rishi\Downloads\kendrick lamar.jpg" height="200">
+    <img src="C:\Users\rishi\Downloads\Sza and Kendrick Lamar (1).jpg" height="200">
+    <img src="C:\Users\rishi\Downloads\Sza ☆.jpg">
+</div>
+
+<script>
+    const preview= document.getElementById("preview");
+    document.getElementById("thumbnails").addEventListener("click", (e)=>{
+        if(e.target.tagName==="IMG"){
+            preview.src = e.target.src;
+        }
+    })
+</script>
