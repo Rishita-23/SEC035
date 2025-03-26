@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .menu-title {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .menu-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 280px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .menu-item h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+            color: #444;
+        }
+
+        .menu-item p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .menu-item .price {
+            font-size: 1.2em;
+            color: #000;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="menu-title">My Korean Menu</h1>
+
+        <div class="menu-section">
+            <div class="menu-item">
+                <img src="https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_4:3/k%2FPhoto%2FRecipes%2F2024-08-korean-fried-chicken%2F190-korean-fried-chicken-175" alt="Dish 1">
+                <div class="menu-item-content">
+                    <h3>Korean Fried Chicken</h3>
+                    <p>Fresh greens with fried chicken, saucy and vinaigrette dressing.</p>
+                    <div class="price">Rs.750</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://christieathome.com/wp-content/uploads/2020/03/Jajangmyeon-6.jpg" alt="Dish 2">
+                <div class="menu-item-content">
+                    <h3>Jajangmyeon</h3>
+                    <p>Classic Korean pasta with rich, savory black bean sauce.</p>
+                    <div class="price">Rs.560</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://static.toiimg.com/photo/51892394.cms" alt="Dish 3">
+                <div class="menu-item-content">
+                    <h3>Cheese Bulddak Ramen</h3>
+                    <p>Cheesy, savory bulddak noodles.</p>
+                    <div class="price">Rs.540</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://chefatulya.com/wp-content/uploads/2021/07/tteokbokki_1-copy.jpg" alt="Dish 4">
+                <div class="menu-item-content">
+                    <h3>Tteokboki</h3>
+                    <p>Chewy rice cakes in korean red chilli paste.</p>
+                    <div class="price">Rs.480</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="https://brightspotcdn.byu.edu/4e/80/eabb12ae44dfb727c5974d705319/bingsu.jpg" alt="Dish 5">
+                <div class="menu-item-content">
+                    <h3>Bingsu</h3>
+                    <p>Shredded milk shaving with your desired topings.</p>
+                    <div class="price">Rs.250</div>
+                </div>
+            </div>
+
+            <div class="menu-item">
+                <img src="data:image/jpeg;base64,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" alt="Dish 6">
+                <div class="menu-item-content">
+                    <h3>Soju</h3>
+                    <p>Refresheing Korean Fermented Rice Wine.</p>
+                    <div class="price">Rs.280</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
