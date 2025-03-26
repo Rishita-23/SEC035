@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/?size=160&id=115632&format=png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .login-container {
+            background: #ffffff;
+            padding: 40px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+            width: 350px;
+        }
+        input, select {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #0059ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0040b3;
+        }
+        .checkbox-group {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .checkbox-group label {
+            font-size: 14px;
+        }
+        #error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="age" placeholder="Age" required>
+        <select id="state">
+            <option value="">Select State</option>
+            <option value="Bihar">Bihar</option>
+            <option value="Haryana">Haryana</option>
+            <option value="Himachal Pradesh">Himachal Pradesh</option>
+            <option value="Jharkhand">Jharkhand</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Kerala">Kerala</option>
+            <option value="Madhya Pradesh">Madhya Pradesh</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Rajasthan">Rajasthan</option>
+            <option value="Sikkim">Sikkim</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+        </select>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="country" value="India"> India</label>
+            <label><input type="checkbox" name="country" value="USA"> USA</label>
+            <label><input type="checkbox" name="country" value="Europe"> Europe</label>
+        </div>
+        <button onclick="login()">Login</button>
+        <p id="error-message"></p>
+    </div>
+
+    <script>
+        function login() {
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var state = document.getElementById("state").value;
+            var errorMessage = document.getElementById("error-message");
+
+            if ( age >= 18) {
+                alert("Login successful!");
+            } else {
+                errorMessage.textContent = "Invalid username or password";
+            }
+        }
+    </script>
+</body>
+</html>
