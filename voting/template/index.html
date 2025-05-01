@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote for Cats or Dogs</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <h1>Vote for your Favorite!</h1>
+    <button id="vote-cats">Cats</button>
+    <button id="vote-dogs">Dogs</button>
+
+    <h2>Current Results:</h2>
+    <p>Cats: <span id="cats-count">{{ votes['cats'] }}</span></p>
+    <p>Dogs: <span id="dogs-count">{{ votes['dogs'] }}</span></p>
+</body>
+</html>
